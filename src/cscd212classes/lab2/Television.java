@@ -9,19 +9,7 @@ public class Television implements Comparable<Television>{
     private final boolean smart;
 
     public Television(String model, boolean smart, int screenSize, int resolution, String make){
-        if(screenSize < 32 || resolution < 720 || model == null || make == null){
-            throw new IllegalArgumentException("Invalid parameter in constructor");
-        }
-        this.model = model;
-        this.smart = smart;
-        this.screenSize = screenSize;
-        this.resolution = resolution;
-        this.make = make;
-        if(resolution >= 2160){
-            this.fourK = true;
-        } else {
-            this.fourK = false;
-        }
+        this(make,model,smart,screenSize,resolution);
     }
 
     public Television(String make, String model, boolean smart, int screenSize, int resolution){
@@ -41,28 +29,28 @@ public class Television implements Comparable<Television>{
     }
 
     public int getScreenSize(){
-        return screenSize;
+        return this.screenSize;
     }
 
     public int getResolution(){
-        return resolution;
+        return this.resolution;
     }
 
     public String getMake(){
-        return make;
+        return this.make;
     }
 
     public String getModel(){
-        return model;
+        return this.model;
     }
 
     public String toString(){
         String resolutionString = String.valueOf(resolution);
-        if(fourK){
+        if(this.fourK){
             resolutionString = "4K";
         }
         String smartString = "";
-        if(smart){
+        if(this.smart){
             smartString = "smart ";
         }
         return getMake() + "-" + getModel() + ", " + getScreenSize() + " inch " + smartString + "tv with " + resolutionString + " resolution";
@@ -80,7 +68,9 @@ public class Television implements Comparable<Television>{
             return false;
         } else {
             Television t = (Television) o;
-            return t.fourK == fourK && t.make == make && t.model == model && t.resolution == resolution && t.screenSize == screenSize && t.smart == smart;
+            return t.fourK == this.fourK &&
+                    t.make.equals(this.make) && t.model.equals(this.model) && t.resolution == this.resolution &&
+                    t.screenSize == this.screenSize && t.smart == this.smart;
         }
     }
 
