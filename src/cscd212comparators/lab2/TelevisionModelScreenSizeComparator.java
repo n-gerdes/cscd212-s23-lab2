@@ -4,12 +4,12 @@ import java.util.Comparator;
 
 public class TelevisionModelScreenSizeComparator implements Comparator<Television> {
     @Override
-    public int compare(Television first, Television second){
-        if(first == null || second == null){
+    public int compare(final Television first, final Television second) {
+        if (first == null || second == null) {
             throw new IllegalArgumentException("null parameter in TelevisionModelScreenSizeComparator");
         }
         int firstComparison = first.getModel().compareTo(second.getModel());
-        if(firstComparison == 0){
+        if (firstComparison == 0) {
             return first.getScreenSize() - second.getScreenSize();
         } else {
             return firstComparison;
