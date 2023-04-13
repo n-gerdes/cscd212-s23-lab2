@@ -1,5 +1,7 @@
 package cscd212classes.lab2;
-
+/*
+My GitKraken expired, putting this commment here to test pushing changes with the git pushes and stuff
+ */
 public class Television implements Comparable<Television> {
     private final boolean fourK;
     private final String make;
